@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController {
                     self.errorLabel.text = err.localizedDescription
                     print("This is an error.",err.localizedDescription)
                 } else {
-                    self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
                 }
             }
         }

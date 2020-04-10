@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
                     self.errorLabel.text = err.localizedDescription
                     print("This is an error.",err.localizedDescription)
                 } else {
-                    self.performSegue(withIdentifier: "LoginToChat", sender: self)
+                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
                 }
             }
         }
