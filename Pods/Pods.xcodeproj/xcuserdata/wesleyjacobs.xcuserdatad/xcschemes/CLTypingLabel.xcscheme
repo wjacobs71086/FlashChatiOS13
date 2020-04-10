@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6F8A929BDB6E633BE35459804508532F"
-               BuildableName = "libCLTypingLabel.a"
+               BuildableName = "CLTypingLabel.framework"
                BlueprintName = "CLTypingLabel"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

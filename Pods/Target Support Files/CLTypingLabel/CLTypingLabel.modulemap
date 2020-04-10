@@ -1,4 +1,4 @@
-module CLTypingLabel {
+framework module CLTypingLabel {
   umbrella header "CLTypingLabel-umbrella.h"
 
   export *
