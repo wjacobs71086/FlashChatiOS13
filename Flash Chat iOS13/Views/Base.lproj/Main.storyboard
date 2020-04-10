@@ -99,6 +99,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQz-AC-s8v">
+                                        <rect key="frame" x="48" y="0.0" width="318" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="y0w-xD-C7r" secondAttribute="bottom" constant="20" id="7Eg-mL-uTT"/>
@@ -166,6 +173,7 @@
                     <navigationItem key="navigationItem" id="gye-cS-pFw"/>
                     <connections>
                         <outlet property="emailTextfield" destination="u72-XV-6FN" id="Nfc-8N-TNr"/>
+                        <outlet property="errorLabel" destination="WQz-AC-s8v" id="PCi-KC-ins"/>
                         <outlet property="passwordTextfield" destination="hLb-P9-NkF" id="uaM-fo-m8M"/>
                         <segue destination="lwd-AH-u8E" kind="show" identifier="RegisterToChat" id="Hsy-ZX-6Jv"/>
                     </connections>
@@ -371,7 +379,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iLA-8D-Cri"/>
+        <segue reference="Hsy-ZX-6Jv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
