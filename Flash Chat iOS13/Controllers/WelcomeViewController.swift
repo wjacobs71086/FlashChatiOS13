@@ -15,7 +15,18 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        titleLabel.text = ""
+        var charIndex = 0.0
+        let titleText = "⚡️FlashChat"
+
+        
+        for letter in titleText {
+            // If you increment the interval it will, with each loop, make the delay longer. This gives the appearence of a typewriter.
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
+                self.titleLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }
     }
     
 
