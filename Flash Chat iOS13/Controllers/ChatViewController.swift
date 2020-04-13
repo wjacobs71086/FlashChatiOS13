@@ -16,15 +16,12 @@ class ChatViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    let messages: [Message] = [
-        Message(sender: "test1@test.com", body: "Hi there"),
-        Message(sender: "test2@test.com", body: "Hello"),
-        Message(sender: "test1@test.com", body: "How are you?"),
-    ]
+    var messages: [Message] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadMessages()
         navigationItem.hidesBackButton = true
         navigationItem.title = "⚡️FlashChat"
         tableView.dataSource = self
@@ -33,7 +30,35 @@ class ChatViewController: UIViewController {
         //The first step to using a custom design element is to register it.
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
+        
+        
     }
+    
+    func loadMessages(){
+        messages = []
+        db.collection(K.FStore.collectionName).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err.localizedDescription)")
+            } else {
+                if let snapshotData = querySnapshot?.documents {
+                    for document in snapshotData {
+                        let data = document.data()
+                        if let body = data[K.FStore.bodyField] as? String, let sender = data[K.FStore.senderField] as? String {
+                            let newMessage = Message(sender: sender, body: body)
+                            self.messages.append(newMessage)
+                            
+                            DispatchQueue.main.async {
+                                 self.tableView.reloadData()
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
     
     @IBAction func sendPressed(_ sender: UIButton) {
         if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
@@ -41,12 +66,16 @@ class ChatViewController: UIViewController {
                 if let err = error {
                     print("Issue saving data", err.localizedDescription)
                 } else {
-                    print("You did it!")
+                    DispatchQueue.main.async {
+                        self.loadMessages()
+                        self.tableView.reloadData()
+                        self.messageTextfield.text = ""
+                    }
                 }
             }
         }
-        
     }
+    
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
         do {
